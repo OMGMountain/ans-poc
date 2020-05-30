@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <el-container direction="vertaical">
-      <el-header>易观</el-header>
+      <el-header>易观方舟</el-header>
       <el-main>
         <!-- swiper -->
         <el-carousel height="150px">
@@ -40,23 +40,24 @@
       </el-main>
       <el-header>热门推荐</el-header>
       <el-main class="main-box">
-        <div class="hot-box"
-             v-for="item in goodList"
-             :key="item.index">
-          <!-- 图片 -->
-          <div class="hot-box-img">
-            <img :src="item.src">
+        <router-link :to="{name:'detail'}">
+          <div class="hot-box"
+               v-for="item in goodList"
+               :key="item.index">
+            <!-- 图片 -->
+            <div class="hot-box-img">
+              <img :src="item.src">
+            </div>
+            <!-- 详情介绍 -->
+            <div class="hot-box-desc">
+              <p class="hot-box-desc-name">
+                <img class="hot-box-desc-name-icon"
+                     src="@/assets/618.png"> {{item.name}}</p>
+              <p class="hot-box-desc-price"><span class="hot-box-desc-price-icon">￥</span>{{item.price}}</p>
+              <p class="hot-box-desc-desc">{{item.desc}}</p>
+            </div>
           </div>
-          <!-- 详情介绍 -->
-          <div class="hot-box-desc">
-            <p class="hot-box-desc-name">
-              <img class="hot-box-desc-name-icon"
-                   src="@/assets/618.png"> {{item.name}}</p>
-            <p class="hot-box-desc-price"><span class="hot-box-desc-price-icon">￥</span>{{item.price}}</p>
-            <p class="hot-box-desc-desc">{{item.desc}}</p>
-          </div>
-
-        </div>
+        </router-link>
       </el-main>
       <el-footer class="footer-box">
         <div class="footer-item footer-item1">
@@ -66,12 +67,16 @@
           </router-link>
         </div>
         <div class="footer-item footer-item2">
-          <div class="footer-item-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8BAMAAADI0sRBAAAAFVBMVEVHcEzIyMjDw8PDw8PDw8PDw8PDw8NNc7pKAAAAB3RSTlMAHKbm/+2nMPnTbQAAAE1JREFUeAFjIBuMAkZlFxAwEkBmIoCoCwQEIjMRIAUq5oTMRAATqJgzMhMBXGAAiYlDelSacKASjhLCEcqYDEsDCOYwT6mjKXU0pY4CAF0upynPNQ7eAAAAAElFTkSuQmCC"></div>
-          <p class="footer-item-text">分类</p>
+          <router-link :to="{name:'classify'}">
+            <div class="footer-item-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8BAMAAADI0sRBAAAAFVBMVEVHcEzIyMjDw8PDw8PDw8PDw8PDw8NNc7pKAAAAB3RSTlMAHKbm/+2nMPnTbQAAAE1JREFUeAFjIBuMAkZlFxAwEkBmIoCoCwQEIjMRIAUq5oTMRAATqJgzMhMBXGAAiYlDelSacKASjhLCEcqYDEsDCOYwT6mjKXU0pY4CAF0upynPNQ7eAAAAAElFTkSuQmCC"></div>
+            <p class="footer-item-text">分类</p>
+          </router-link>
         </div>
         <div class="footer-item footer-item3">
-          <div class="footer-item-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAACEklEQVR4AWJwB7RrBxDNRVEcwH2f74tCiRQJBRACAgQKKEqAIoRFoARkAEQgISAJTWiAFhH0dvYurgkjBSg2aFUSLa3XuVzMtQruu+/sdvBHxbn355zdl/u2MvWrwmAGM5jBDKYcBgdBsIB5xERNUs/n8zkp5X+fwJcm1AwAzPgEvv4JjF3O+gRewjwbyA/j51dMt9eHFgInDHTKa3AURX8QedMw1oH3jyVEbjWOuRBiyHfwmDHWaa/BONZ/EVlpAF95/58WIneMLh9i9ohlUwgxYAUMAOMKSj348buwAsax/ocF71oAXbEC1ofXbgt0eN8aGAAmWwA8bQ1cKpXasOgTYfBLoVBotwbWY31AGHxk/QIAi84SHud562ApZYcaHYLgN9xbl3WwHussQfBJbHdaWHyOIDgVG1gI0YkL1Ahh62EY9lkHG10+JgQ+V3uKG7xI6HRejR0spezBxd4pgHGcB2MH6y6fEQAXnb15AIBlAuC0MzB+dvrNq1zXEUIMOwPrsQbXSPOqyTV4LcHTecM5WF3ZJgUGgFHnYN3lYgLgW/WSIBEwjtZ6AuDtxF6IA0AvbuDeIfZBXccmBlYJw3AEO30a8xVQDdfIqbX4Kw8MZjCDrUSdnkEQZDBlnYz6nes6ZuLEVpucrlX1Nwd13IJ1R6IvknFQxzm4/M1Gy67rMJhHmg8tfizRD4MZzGAG+5BP4NOyXq3NTiAAAAAASUVORK5CYII="></div>
-          <p class="footer-item-text">购物车</p>
+          <router-link :to="{name:'cart'}">
+            <div class="footer-item-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAACEklEQVR4AWJwB7RrBxDNRVEcwH2f74tCiRQJBRACAgQKKEqAIoRFoARkAEQgISAJTWiAFhH0dvYurgkjBSg2aFUSLa3XuVzMtQruu+/sdvBHxbn355zdl/u2MvWrwmAGM5jBDKYcBgdBsIB5xERNUs/n8zkp5X+fwJcm1AwAzPgEvv4JjF3O+gRewjwbyA/j51dMt9eHFgInDHTKa3AURX8QedMw1oH3jyVEbjWOuRBiyHfwmDHWaa/BONZ/EVlpAF95/58WIneMLh9i9ohlUwgxYAUMAOMKSj348buwAsax/ocF71oAXbEC1ofXbgt0eN8aGAAmWwA8bQ1cKpXasOgTYfBLoVBotwbWY31AGHxk/QIAi84SHud562ApZYcaHYLgN9xbl3WwHussQfBJbHdaWHyOIDgVG1gI0YkL1Ahh62EY9lkHG10+JgQ+V3uKG7xI6HRejR0spezBxd4pgHGcB2MH6y6fEQAXnb15AIBlAuC0MzB+dvrNq1zXEUIMOwPrsQbXSPOqyTV4LcHTecM5WF3ZJgUGgFHnYN3lYgLgW/WSIBEwjtZ6AuDtxF6IA0AvbuDeIfZBXccmBlYJw3AEO30a8xVQDdfIqbX4Kw8MZjCDrUSdnkEQZDBlnYz6nes6ZuLEVpucrlX1Nwd13IJ1R6IvknFQxzm4/M1Gy67rMJhHmg8tfizRD4MZzGAG+5BP4NOyXq3NTiAAAAAASUVORK5CYII="></div>
+            <p class="footer-item-text">购物车</p>
+          </router-link>
         </div>
         <div class="footer-item footer-item4">
           <router-link :to="{name:'mine'}">
@@ -192,6 +197,7 @@ body > .el-container {
 .hot-box {
   overflow: hidden;
   margin-bottom: 5px;
+  color: #333;
 }
 .hot-box-img {
   float: left;
