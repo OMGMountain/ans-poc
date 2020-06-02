@@ -7,45 +7,61 @@
       </div>
       <p class="ui-header-text">转账</p>
     </header>
-    <!-- 收款人信息 -->
+    <!-- setSDK信息 -->
     <div class="pay-detail">
       <div class="pay-detail-item">
-        <p class="pay-detail-item-text"> 收款人姓名：</p>
+        <p class="pay-detail-item-text"> 方舟APPKEY:</p>
         <input type="text"
                class="pay-detail-item-val"
-               placeholder="如：张三">
+               v-model="appkey"
+               placeholder="请输入APPKEY">
       </div>
       <div class="pay-detail-item">
-        <p class="pay-detail-item-text"> 收款人银行：</p>
+        <p class="pay-detail-item-text"> 上报地址:</p>
         <input type="text"
+               v-model="uploadURL"
                class="pay-detail-item-val"
-               placeholder="如：张三">
+               placeholder="上报地址">
       </div>
       <div class="pay-detail-item">
-        <p class="pay-detail-item-text"> 转账金额：</p>
+        <p class="pay-detail-item-text"> API上报地址:</p>
         <input type="text"
+               v-model="APIURL"
                class="pay-detail-item-val"
-               placeholder="如：张三">
+               placeholder="上报地址">
       </div>
     </div>
-
-    <!-- 确认订单 -->
-    <button class="submit-order">确认转账</button>
+    <!-- 确认信息 -->
+    <button class="submit-order"
+            @click="setSDK">确认信息</button>
   </div>
 </template>
 <script>
 
 export default {
-  name: 'order',
+  name: 'setsdk',
   data () {
     return {
-
+      appkey: "",
+      uploadURL: "",
+      APIURL: ""
     }
   },
   methods: {
     goBack () {
       history.back();
-      console.log('go back');
+    },
+    setSDK () {
+      if (this.appkey == "" || this.uploadURL == "") {
+        console.log(1);
+        return;
+      }
+      this.$store.commit('appkey', this.appkey)
+      this.$store.commit('uploadURL', this.uploadURL)
+      localStorage.setItem("Ansappkey", this.appkey)
+      localStorage.setItem("AnsuploadURL", this.uploadURL)
+      localStorage.setItem("AnsAPIURL", this.APIURL)
+      this.$router.push({ path: '/mine' })
     }
   }
 }

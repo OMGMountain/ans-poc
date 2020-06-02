@@ -56,7 +56,11 @@ export default {
     goOrder () {
       this.$router.push({ path: '/detail/order' })
     }
+  },
+  beforeCreate () {
+    console.log("url", location.href)
   }
+
 }
 </script>
 

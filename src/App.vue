@@ -22,4 +22,12 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+a {
+  text-decoration: none;
+}
+input,
+button {
+  outline: none;
+  border: none;
+}
 </style>

@@ -3,18 +3,27 @@ import Router from 'vue-router'
 import index from '@/pages/index/index'
 import mine from '@/pages/mine/mine'
 import rigister from "@/pages/mine/rigister"
+import login from "@/pages/mine/login"
 import classify from "@/pages/classify/classify"
 import detail from "@/pages/detail/detail"
 import order from "@/pages/detail/order"
 import ensure from "@/pages/detail/ensure"
-import pay from "@/pages/detail/pay"
+import transfer from "@/pages/detail/transfer"
 import cart from "@/pages/cart/cart"
+import setsdk from "@/pages/mine/setSDK"
+import pay from "@/pages/cart/pay"
+
+
 
 
 Vue.use(Router)
 
 export default new Router({
     routes: [
+        {
+            path: '/',
+            redirect: { name: "index" }
+        },
         {
             path: '/index',
             name: 'index',
@@ -26,9 +35,24 @@ export default new Router({
             component: mine
         },
         {
-            path: '/rigister',
+            path: '/cart',
+            name: 'cart',
+            component: cart
+        },
+        {
+            path: '/cart/pay',
+            name: 'pay',
+            component: pay
+        },
+        {
+            path: '/mine/rigister',
             name: 'rigister',
             component: rigister
+        },
+        {
+            path: '/mine/login',
+            name: 'login',
+            component: login
         },
         {
             path: '/classify',
@@ -51,14 +75,14 @@ export default new Router({
             component: ensure
         },
         {
-            path: '/detail/pay',
-            name: 'pay',
-            component: pay
+            path: '/detail/transfer',
+            name: 'transfer',
+            component: transfer
         },
         {
-            path: '/cart',
-            name: 'cart',
-            component: cart
+            path: '/mine/setsdk',
+            name: 'setsdk',
+            component: setsdk
         }
     ]
 })
