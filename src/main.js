@@ -1,16 +1,18 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+import AnalysysAgent from 'ans-javascript-sdk/SDK/AnalysysAgent_JS_SDK.es6.min.js'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import App from './App'
 import router from './router'
 import store from './store/index'
-import AnalysysAgent from 'ans-javascript-sdk/SDK/AnalysysAgent_JS_SDK.es6.min.js'
 
 
 Vue.use(ElementUI);
 Vue.config.productionTip = false
+
+
 
 /* eslint-disable no-new */
 new Vue({
@@ -34,8 +36,9 @@ AnalysysAgent.init({
     autoWebstay: true,
     autoHeatmap: true,
     visitorConfigURL: "",
-    SDKFileDirectory: './SDK'//可视化与热图模块SDK存放目录。
+    SDKFileDirectory: "./static/SDK"
 })
+
 
 function random (min, max) {
     return Math.floor(Math.random() * (max - min)) + min;

@@ -18,6 +18,7 @@ import pay from "@/pages/cart/pay"
 
 Vue.use(Router)
 
+
 export default new Router({
     routes: [
         {
@@ -86,3 +87,12 @@ export default new Router({
         }
     ]
 })
+
+// console.log("3333", location.href)
+
+// router.beforeEach((to, from, next) => {
+//     console.log(from)
+//     next()
+// })
+
+//  router
