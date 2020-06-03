@@ -50,7 +50,7 @@ export default {
   data () {
     return {
       orderList: [
-        { index: 0, desc: "苹果11 黑色128G 京东自营", num: 1, price: 4999, numAll: 4999 },
+        { index: 0, desc: "苹果11 黑色128G 京东自营", num: 1, price: 4999, numAll: 4999, id: 5233 },
       ],
       numAllPrice: 0
     }
@@ -70,14 +70,13 @@ export default {
       var baseStr = utils.param(utils.getProperty());
       var goodsInfo = {
         item_id: this.orderList[0].id,
-        item_name: this.orderList[0].name,
+        item_name: this.orderList[0].desc,
         order_id: "2020061801010002",
         order_amount: this.orderList[0].price,
         order_due_time: "2020-06-18-06-18:00",
         pay_method: "Alipay"
       }
       var goodstr = utils.param(goodsInfo);
-      console.log(333, goodstr)
       var that = this
       // 先发送请求
       //   axios.get('/api/payOrder?' + baseStr + '&' + goodstr)

@@ -35,8 +35,8 @@ AnalysysAgent.init({
     debug: 2,
     autoWebstay: true,
     autoHeatmap: true,
-    visitorConfigURL: "",
-    SDKFileDirectory: "./static/SDK"
+    visitorConfigURL: uploadURL,
+    SDKFileDirectory: "../static/SDK"
 })
 
 
