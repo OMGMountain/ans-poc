@@ -12,20 +12,10 @@ import store from './store/index'
 Vue.use(ElementUI);
 Vue.config.productionTip = false
 
-
-
-/* eslint-disable no-new */
-new Vue({
-    el: '#app',
-    router,
-    store,
-    components: { App },
-    template: '<App/>'
-})
-
 // 获取appkey
 var appkey = localStorage.getItem("Ansappkey") || ""  // 'heatmaptest0916'
 var uploadURL = localStorage.getItem("AnsuploadURL") || "" // 'https://arkpaastest.analysys.cn:4089'
+console.log("初始护花")
 
 AnalysysAgent.init({
     appkey: appkey,//APPKEY
@@ -38,6 +28,17 @@ AnalysysAgent.init({
     visitorConfigURL: uploadURL,
     SDKFileDirectory: "../static/SDK"
 })
+
+/* eslint-disable no-new */
+new Vue({
+    el: '#app',
+    router,
+    store,
+    components: { App },
+    template: '<App/>'
+})
+
+
 
 
 function random (min, max) {

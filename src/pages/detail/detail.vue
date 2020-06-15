@@ -31,20 +31,21 @@
 </template>
 <script>
 import detail from "@/assets/iphone.jpg"
+import xmgj from "@/assets/xmgj.jpeg"
 
 export default {
   name: 'detail',
   data () {
     return {
       headerswiper: [
-        { 'index': 1, 'src': detail },
-        { 'index': 2, 'src': detail },
-        { 'index': 3, 'src': detail }
+        { 'index': 1, 'src': xmgj },
+        { 'index': 2, 'src': xmgj },
+        { 'index': 3, 'src': xmgj }
       ],
       detail: {
-        desc: "官方正品，自营黑色，128G",
-        price: "￥5199",
-        oldPrice: "￥5999"
+        desc: "9999起存，半年收益666",
+        price: "￥9999",
+        oldPrice: "￥9999"
       }
     }
   },
@@ -59,8 +60,27 @@ export default {
   },
   beforeCreate () {
     console.log("url", location.href)
-  }
+  },
+  mounted () {
+    if (this.$route.params.desc) {
+      this.detail.desc = this.$route.params.desc
+      this.detail.price = this.$route.params.price
+      this.detail.oldPrice = this.$route.params.price
+    }
 
+    console.log("上报", this.$route.params.desc)
+    //   浏览商品时触发
+    let finance_item_view_info = {
+      'item_id': "67857",
+      'item_type': "活期",
+      'risk_level': 'R1低风险',
+      'day_7_annual_revenue': 2,
+      'time_length': 180,
+      'min_purchhase_amount': 1000
+    };
+
+    AnalysysAgent.track('finance_item_view', finance_item_view_info)
+  }
 }
 </script>
 

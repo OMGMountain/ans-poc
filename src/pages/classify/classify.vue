@@ -10,24 +10,24 @@
     <div class="ui-gray"></div>
     <el-header class="hot-recommend">热门推荐</el-header>
     <el-main class="main-box">
-      <router-link :to="{name:'detail'}">
-        <div class="hot-box"
-             v-for="item in goodList"
-             :key="item.index">
-          <!-- 图片 -->
-          <div class="hot-box-img">
-            <img :src="item.src">
-          </div>
-          <!-- 详情介绍 -->
-          <div class="hot-box-desc">
-            <p class="hot-box-desc-name">
-              <img class="hot-box-desc-name-icon"
-                   src="@/assets/618.png"> {{item.name}}</p>
-            <p class="hot-box-desc-price"><span class="hot-box-desc-price-icon">￥</span>{{item.price}}</p>
-            <p class="hot-box-desc-desc">{{item.desc}}</p>
-          </div>
+      <div class="hot-box"
+           v-for="(item,index) in goodList"
+           :key="item.index"
+           @click="goDetail(index)">
+        <!-- 图片 -->
+        <div class="
+           hot-box-img">
+          <img :src="item.src">
         </div>
-      </router-link>
+        <!-- 详情介绍 -->
+        <div class="hot-box-desc">
+          <p class="hot-box-desc-name">
+            <img class="hot-box-desc-name-icon"
+                 src="@/assets/618.png"> {{item.name}}</p>
+          <p class="hot-box-desc-price"><span class="hot-box-desc-price-icon">￥</span>{{item.price}}</p>
+          <p class="hot-box-desc-desc">{{item.desc}}</p>
+        </div>
+      </div>
     </el-main>
     <el-footer class="footer-box">
       <div class="footer-item footer-item1">
@@ -60,24 +60,24 @@
 
 <script>
 import iphone from "@/assets/iphone.jpg"
-
+import xmgj from '@/assets/xmgj.jpeg'
 
 export default {
   name: 'classify',
   data () {
     return {
       brandList: [
-        { "index": 0, brand: "华为手机", id: 5893 },
-        { "index": 1, brand: "苹果手机", id: 8182 },
-        { "index": 2, brand: "小米手机", id: 1123 },
-        { "index": 3, brand: "OPPO手机", id: 4234 },
-        { "index": 4, brand: "Vivo手机", id: 1135 },
+        { "index": 0, brand: "3月期理财", id: 5893 },
+        { "index": 1, brand: "半年期理财", id: 8182 },
+        { "index": 2, brand: "一年期理财", id: 1123 },
+        { "index": 3, brand: "三年期理财", id: 4234 },
+        { "index": 4, brand: "五年期理财", id: 1135 },
       ],
       goodList: [
-        { 'index': 0, 'src': iphone, 'name': 'Apple iPhone11', 'price': '5999', 'desc': '黑色 128G，官方自营' },
-        { 'index': 1, 'src': iphone, 'name': 'Apple iPhone11', 'price': '5999', 'desc': '黑色 128G，官方自营' },
-        { 'index': 2, 'src': iphone, 'name': 'Apple iPhone11', 'price': '5999', 'desc': '黑色 128G，官方自营' },
-        { 'index': 3, 'src': iphone, 'name': 'Apple iPhone11', 'price': '5999', 'desc': '黑色 128G，官方自营' }
+        { 'index': 0, 'src': xmgj, 'name': '薅羊毛半年期理财', 'price': '9999', 'desc': '9999起存，半年收益666' },
+        { 'index': 1, 'src': xmgj, 'name': '长久计划五年期', 'price': '50000', 'desc': '年收益超过5%' },
+        { 'index': 2, 'src': xmgj, 'name': '中长期一年理财', 'price': '20000', 'desc': '时间一年，收益可观' },
+        { 'index': 3, 'src': xmgj, 'name': '中长期三年理财', 'price': '30000', 'desc': '时间不长，5%收益，超划算' }
       ]
     }
   },
@@ -86,6 +86,17 @@ export default {
       AnalysysAgent.track("view_item", {
         item_id: this.brandList[index].id,
         item_name: this.brandList[index].brand
+      })
+    },
+    goDetail (index) {
+      let _this = this
+      this.$router.push({
+        name: 'detail',
+        params: {
+          name: _this.goodList[index].name,
+          price: _this.goodList[index].price,
+          desc: _this.goodList[index].desc
+        }
       })
     }
   }

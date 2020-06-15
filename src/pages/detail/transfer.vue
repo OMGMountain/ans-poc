@@ -68,22 +68,22 @@ export default {
         is_usual: false
       }
       var goodstr = utils.param(transferInfo);
-      console.log(333, goodstr)
       var that = this
-      // 先发送请求
-      //   axios.get('/api/transfer?' + baseStr + '&' + goodstr)
-      //     .then(function (response) {
-      //       if (response.data.code == 200) {
-      //         console.log("埋点成功")
-      //       }
-      //       console.log(response);
-      //     })
-      //     .catch(function (error) {
-      //       console.log(error);
-      //     });
+      //   提交转账申请
+      var transfer_apply_info = {
+        "payee_name": this.peopleName,
+        'payee_card_num': "622848678766787789",
+        'payee_bank_name': 'this.bankName',
+        'transffeer_type': "Alipay",
+        'is_reeservation': false,
+        'amount': this.money,
+        'curreeency_unit': 'CNY',
+        'message': "申请转账",
+        'phone_number': '18888888886'
+      }
+      AnalysysAgent.track('transffer_apply', transfer_apply_info);
 
       let baseURL = localStorage.getItem("AnsAPIURL")
-
       $.ajax({
         url: baseURL + '/transfer?' + baseStr + '&' + goodstr,
         type: 'get',
